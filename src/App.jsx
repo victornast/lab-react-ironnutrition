@@ -1,13 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.scss';
 
 import meals from './meals';
 
-class App extends Component {
+import MealBox from './components/MealBox';
+
+class App extends React.Component {
   render() {
     return (
       <div>
-        <p>Sample App</p>
+        <h1>IronNutrition</h1>
+        <MealBox />
       </div>
     );
   }
