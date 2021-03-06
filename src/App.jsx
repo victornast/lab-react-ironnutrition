@@ -10,7 +10,9 @@ class App extends React.Component {
     return (
       <div>
         <h1>IronNutrition</h1>
-        <MealBox />
+        {meals.map((meal) => (
+          <MealBox meal={meal} />
+        ))}
       </div>
     );
   }
