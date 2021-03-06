@@ -11,7 +11,7 @@ class App extends React.Component {
       <div>
         <h1>IronNutrition</h1>
         {meals.map((meal) => (
-          <MealBox meal={meal} />
+          <MealBox key={meal.name} meal={meal} />
         ))}
       </div>
     );
