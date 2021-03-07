@@ -1,5 +1,5 @@
 import React from 'react';
-import './Search.scss';
+import { Form } from 'react-bootstrap';
 
 class Search extends React.Component {
   handleFilterChange = (event) => {
@@ -9,17 +9,17 @@ class Search extends React.Component {
 
   render() {
     return (
-      <div className="search">
-        <form>
-          <label htmlFor="meal-filter">Meal Filter</label>
-          <input
-            onChange={this.handleFilterChange}
-            type="text"
-            placeholder="Meal name"
-            value={this.props.filter}
-          />
-        </form>
-      </div>
+      <Form className="mt-2">
+        <Form.Label htmlFor="meal-filter" srOnly>
+          Meal Filter
+        </Form.Label>
+        <Form.Control
+          onChange={this.handleFilterChange}
+          type="text"
+          placeholder="Meal name"
+          value={this.props.filter}
+        />
+      </Form>
     );
   }
 }

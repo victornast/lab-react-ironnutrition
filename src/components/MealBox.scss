@@ -1,6 +1,16 @@
-.media {
-  max-width: 30em;
-  border: 1px solid grey;
-  border-radius: 0.3em;
-  margin-top: 1em;
+.in-mb-media-image {
+  width: 4em;
+  height: 4em;
+  object-fit: cover;
+}
+
+.in-mb-quantity {
+  max-width: 4em;
+}
+
+// Bumping up specificity against bootstrap
+.in-mb-add-meal.in-mb-add-meal {
+  width: 4.2rem;
+  font-size: 1.4rem;
+  flex: 0 0 auto;
 }

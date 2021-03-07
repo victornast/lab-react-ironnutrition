@@ -1,5 +1,4 @@
 import React from 'react';
-import './AddNewMeal.scss';
 
 class AddNewMeal extends React.Component {
   state = {
@@ -32,7 +31,9 @@ class AddNewMeal extends React.Component {
     return (
       <div className="add-new-meal">
         <form onSubmit={this.toggleActive}>
-          <button>{(this.state.active && 'Cancel') || 'Add new meal'}</button>
+          <button>
+            {(this.state.active && 'Cancel') || 'Add new meal'}
+          </button>
         </form>
         {this.state.active && (
           <form onSubmit={this.handleFormSubmission}>
