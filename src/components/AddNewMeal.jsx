@@ -18,7 +18,12 @@ class AddNewMeal extends React.Component {
     event.preventDefault();
     const { mealName, calories, image, quantity } = this.state;
     if (!mealName && !calories && !image) return;
-    const newMeal = { name: mealName, calories, image, quantity };
+    const newMeal = {
+      name: mealName,
+      calories: Number(calories),
+      image,
+      quantity
+    };
     this.props.onMealAdd(newMeal);
     this.setState({
       mealName: '',
