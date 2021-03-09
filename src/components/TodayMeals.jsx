@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 const TodayMeals = ({ meals, onMealRemove }) => {
   const totalCalories = meals.reduce(
@@ -10,9 +11,13 @@ const TodayMeals = ({ meals, onMealRemove }) => {
   return (
     <>
       <h3 className="mt-2">Today's Meals</h3>
-      <ul>
+      <ListGroup variant="flush">
         {meals.map((meal) => (
-          <li key={meal.name}>
+          <ListGroup.Item
+            key={meal.name}
+            variant="light"
+            className="p-0"
+          >
             <p className="m-0 d-flex">
               <span className="align-self-center">
                 {meal.quantity} — {meal.name} :{' '}
@@ -35,10 +40,10 @@ const TodayMeals = ({ meals, onMealRemove }) => {
                 </svg>
               </Button>
             </p>
-          </li>
+          </ListGroup.Item>
         ))}
-      </ul>
-      <h4>Total: {totalCalories} cal</h4>
+      </ListGroup>
+      <h4 className="mt-2">Total: {totalCalories} cal</h4>
     </>
   );
 };
