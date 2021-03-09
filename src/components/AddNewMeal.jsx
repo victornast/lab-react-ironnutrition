@@ -20,6 +20,13 @@ class AddNewMeal extends React.Component {
     if (!mealName && !calories && !image) return;
     const newMeal = { name: mealName, calories, image, quantity };
     this.props.onMealAdd(newMeal);
+    this.setState({
+      mealName: '',
+      calories: 0,
+      image: '',
+      quantity: 0,
+      active: false
+    });
   };
 
   handleNewMealChange = (event) => {
@@ -29,12 +36,7 @@ class AddNewMeal extends React.Component {
 
   render() {
     return (
-      <div className="add-new-meal">
-        <form onSubmit={this.toggleActive}>
-          <button>
-            {(this.state.active && 'Cancel') || 'Add new meal'}
-          </button>
-        </form>
+      <>
         {this.state.active && (
           <form onSubmit={this.handleFormSubmission}>
             <label htmlFor="new-meal-name">Name</label>
@@ -45,6 +47,7 @@ class AddNewMeal extends React.Component {
               type="text"
               placeholder="Name"
               value={this.state.mealName}
+              required
             />
             <label htmlFor="new-meal-calories">Calories</label>
             <input
@@ -54,6 +57,7 @@ class AddNewMeal extends React.Component {
               type="number"
               placeholder="Calories"
               value={this.state.calories}
+              required
             />
             <label htmlFor="new-meal-img">Image</label>
             <input
@@ -63,11 +67,16 @@ class AddNewMeal extends React.Component {
               type="text"
               placeholder="Image"
               value={this.state.image}
+              required
             />
             <button>Add to list</button>
           </form>
         )}
-      </div>
+
+        <button onClick={this.toggleActive}>
+          {(this.state.active && 'Cancel') || 'Add new meal'}
+        </button>
+      </>
     );
   }
 }
