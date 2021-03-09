@@ -51,6 +51,13 @@ class App extends React.Component {
     }
   };
 
+  removeTodayMeal = (meal) => {
+    const cloneMealListToday = this.state.mealListToday.filter(
+      (meals) => meals.name !== meal
+    );
+    this.setState({ mealListToday: [...cloneMealListToday] });
+  };
+
   render() {
     return (
       <Container fluid className="App">
@@ -77,7 +84,10 @@ class App extends React.Component {
               ))}
           </Col>
           <Col>
-            <TodayMeals meals={this.state.mealListToday} />
+            <TodayMeals
+              meals={this.state.mealListToday}
+              onMealRemove={this.removeTodayMeal}
+            />
           </Col>
         </Row>
       </Container>
