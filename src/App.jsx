@@ -8,12 +8,14 @@ import meals from './meals';
 import MealBox from './components/MealBox';
 import AddNewMeal from './components/AddNewMeal';
 import Search from './components/Search';
+import TodayMeals from './components/TodayMeals';
 
 import './App.scss';
 
 class App extends React.Component {
   state = {
     mealList: meals,
+    mealListToday: [],
     filter: ''
   };
 
@@ -23,6 +25,30 @@ class App extends React.Component {
 
   filterChange = (filter) => {
     this.setState({ filter: filter });
+  };
+
+  addTodaysMeal = (meal) => {
+    const isDuplicate = this.state.mealListToday.find(
+      (current) => current.name === meal.name
+    );
+
+    if (isDuplicate) {
+      const duplicateIndex = this.state.mealListToday.indexOf(
+        isDuplicate
+      );
+      isDuplicate.quantity += Number(meal.quantity);
+      this.setState({
+        mealListToday: [
+          ...this.state.mealListToday.slice(0, duplicateIndex),
+          isDuplicate,
+          ...this.state.mealListToday.slice(duplicateIndex + 1)
+        ]
+      });
+    } else {
+      this.setState({
+        mealListToday: [...this.state.mealListToday, meal]
+      });
+    }
   };
 
   render() {
@@ -43,10 +69,16 @@ class App extends React.Component {
                   .includes(this.state.filter.toLowerCase())
               )
               .map((meal) => (
-                <MealBox key={meal.name} meal={meal} />
+                <MealBox
+                  key={meal.name}
+                  meal={meal}
+                  onMealAdd={this.addTodaysMeal}
+                />
               ))}
           </Col>
-          <Col></Col>
+          <Col>
+            <TodayMeals meals={this.state.mealListToday} />
+          </Col>
         </Row>
       </Container>
     );

@@ -16,6 +16,17 @@ class MealBox extends React.Component {
     this.setState({ quantity: value });
   };
 
+  handleFoodSubmission = (event) => {
+    event.preventDefault();
+    const meal = {
+      name: this.props.meal.name,
+      calories: this.props.meal.calories,
+      quantity: this.state.quantity
+    };
+    this.props.onMealAdd(meal);
+    this.setState({ quantity: 1 });
+  };
+
   render() {
     const meal = this.props.meal;
     return (
@@ -30,14 +41,20 @@ class MealBox extends React.Component {
             <h5 className="mt-0 mb-1">{meal.name}</h5>
             <small>{meal.calories} cal</small>
           </div>
-          <Form className="d-flex justify-content-end">
+          <Form
+            onSubmit={this.handleFoodSubmission}
+            className="d-flex justify-content-end"
+          >
             <Form.Control
               onChange={this.handleQuantityChange}
               className="h-auto border-0 in-mb-quantity"
               type="number"
               value={this.state.quantity}
             />
-            <Button className="btn btn-primary rounded-0 in-mb-add-meal">
+            <Button
+              type="submit"
+              className="btn btn-primary rounded-0 in-mb-add-meal"
+            >
               +
             </Button>
           </Form>
