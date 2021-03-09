@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 
 class AddNewMeal extends React.Component {
   state = {
@@ -44,9 +44,11 @@ class AddNewMeal extends React.Component {
     return (
       <>
         {this.state.active && (
-          <form onSubmit={this.handleFormSubmission}>
-            <label htmlFor="new-meal-name">Name</label>
-            <input
+          <Form onSubmit={this.handleFormSubmission}>
+            <Form.Label htmlFor="new-meal-name" className="mt-2">
+              Name
+            </Form.Label>
+            <Form.Control
               onChange={this.handleNewMealChange}
               name="mealName"
               id="new-meal-name"
@@ -55,8 +57,10 @@ class AddNewMeal extends React.Component {
               value={this.state.mealName}
               required
             />
-            <label htmlFor="new-meal-calories">Calories</label>
-            <input
+            <Form.Label htmlFor="new-meal-calories" className="mt-2">
+              Calories
+            </Form.Label>
+            <Form.Control
               onChange={this.handleNewMealChange}
               name="calories"
               id="new-meal-calories"
@@ -65,8 +69,10 @@ class AddNewMeal extends React.Component {
               value={this.state.calories}
               required
             />
-            <label htmlFor="new-meal-img">Image</label>
-            <input
+            <Form.Label htmlFor="new-meal-img" className="mt-2">
+              Image
+            </Form.Label>
+            <Form.Control
               onChange={this.handleNewMealChange}
               name="image"
               id="new-meal-img"
@@ -75,8 +81,10 @@ class AddNewMeal extends React.Component {
               value={this.state.image}
               required
             />
-            <button>Add to list</button>
-          </form>
+            <Button type="submit" className="btn-success w-100 mt-2">
+              Add to list
+            </Button>
+          </Form>
         )}
 
         <Button
