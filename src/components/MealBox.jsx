@@ -1,5 +1,8 @@
 import React from 'react';
-import { Image, Media, Form, Button } from 'react-bootstrap';
+import Image from 'react-bootstrap/Image';
+import Media from 'react-bootstrap/Media';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 import './MealBox.scss';
 
