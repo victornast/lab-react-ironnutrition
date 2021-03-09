@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 
 class AddNewMeal extends React.Component {
   state = {
@@ -78,9 +79,16 @@ class AddNewMeal extends React.Component {
           </form>
         )}
 
-        <button onClick={this.toggleActive}>
+        <Button
+          className={
+            this.state.active
+              ? 'btn-warning w-100 mt-2'
+              : 'btn-secondary w-100 mt-2'
+          }
+          onClick={this.toggleActive}
+        >
           {(this.state.active && 'Cancel') || 'Add new meal'}
-        </button>
+        </Button>
       </>
     );
   }
